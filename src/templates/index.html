@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Vision AI</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+    <!-- 🔥 LOGO -->
+    <div class="logo">
+        <img src="static/image.png" alt="Neon Vision AI">
+    </div>
+
+    <!-- 🔥 NAVIGATION BAR -->
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <br><br><br>
+    <!-- 🔥 MAIN CONTAINER -->
+    <div class="container" id="home">
+        <h1 class="glow-text" >Illuminate the Unseen, Predict the Unthinkable! ✨🔮</h1>
+        <p class="sub-text">Upload an image and let AI recognize it!</p>
+
+        <!-- 🔥 FILE UPLOAD BUTTON -->
+        <div class="file-upload-wrapper">
+            <label for="file-upload" class="file-upload-label">Choose File</label>
+            <input type="file" id="file-upload" accept="image/*" onchange="displayImage()">
+            <p id="file-name"></p>
+        </div>
+
+        <!-- 🔥 IMAGE PREVIEW -->
+        <div id="image-preview">
+            <img id="preview-img" src="" alt="Uploaded Image">
+        </div>
+
+        <!-- 🔥 PREDICT BUTTON -->
+        <button onclick="predictImage()">Predict</button>
+
+        <!-- 🔥 PREDICTION RESULT -->
+        <div id="predictionResult"></div>
+    </div>
+
+    <br><br><br>
+
+    <!-- 🔥 ABOUT SECTION -->
+    <div class="container" id="about">
+        <h2 class="glow-text">About Us</h2>
+        <p class="description">Neon Vision AI is a cutting-edge AI-powered image recognition platform designed to analyze and classify numbers' images with precision. Our mission is to bring the power of artificial intelligence to everyday applications, making technology more accessible and insightful.</p>
+    </div>
+
+    <br><br><br>
+
+    <!-- 🔥 SERVICES SECTION -->
+    <div class="container" id="services">
+        <h2 class="glow-text">Our Services</h2>
+        <ul>
+            🔍 Number prediction via images.
+        </ul>
+    </div>
+
+    <br><br><br>
+
+    <!-- 🔥 CONTACT SECTION -->
+    <div class="container" id="contact">
+        <h2 class="glow-text">Contact Us</h2>
+        <p>📞 Phone: +92 315 2999226</p>
+        <p>📧 Email: <a href="mailto:ahmedrazaspan@gmail.com">ahmedrazaspan@gmail.com</a></p>
+    </div>
+
+    <br><br><br>
+
+    <!-- 🔥 COPYRIGHT FOOTER -->
+    <div class="footer">
+        &copy; 2025 Neon Vision AI. All Rights Reserved.
+    </div>
+
+    <script>
+        function displayImage() {
+            const fileInput = document.getElementById("file-upload");
+            const fileName = document.getElementById("file-name");
+            const imagePreview = document.getElementById("image-preview");
+            const previewImg = document.getElementById("preview-img");
+
+            if (fileInput.files.length > 0) {
+                fileName.textContent = "Selected File: " + fileInput.files[0].name;
+                
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    imagePreview.style.display = "flex";
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                fileName.textContent = "";
+                imagePreview.style.display = "none";
+            }
+        }
+
+        function predictImage() {
+            const fileInput = document.getElementById("file-upload");
+            if (fileInput.files.length === 0) {
+                alert("Please upload an image first!");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            document.getElementById("predictionResult").innerHTML = "🔮 AI is analyzing...";
+
+            fetch("/predict", { method: "POST", body: formData })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("predictionResult").innerHTML = `✅ Prediction: ${data.prediction}`;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("predictionResult").innerHTML = "❌ Error occurred!";
+            });
+        }
+    </script>
+
+</body>
+</html>

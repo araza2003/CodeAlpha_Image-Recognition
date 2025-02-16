@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+body {
+    background-color: #111;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* LOGO
+.logo {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+} */
+
+.logo img {
+    width: 400px;
+}
+
+.logo {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.navbar {
+    position: fixed;
+    top: auto; /* Remove any fixed top value */
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    box-shadow: 0 0 10px cyan;
+}
+
+/* Ensures navbar stays below the logo */
+.container {
+    margin-top: 120px; /* Adjust this based on the logo size */
+
+}
+
+.description {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically (if needed) */
+    text-align: center; /* Ensures text inside is centered */
+    width: 750px;
+    margin: 0 auto; /* Centers the block element horizontally */
+}
+
+.navbar a {
+    color: cyan;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: magenta;
+}
+
+/* MAIN CONTAINER */
+.container {
+    margin-top: 30px;
+}
+
+/* GLOWING HEADING */
+.glow-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff0080, 0 0 30px #00ffff;
+    animation: neon-flicker 1.5s infinite alternate;
+    margin-bottom: 20px;
+}
+
+@keyframes neon-flicker {
+    0% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff0080, 0 0 30px #00ffff; }
+    100% { text-shadow: 0 0 15px #ff00ff, 0 0 25px #ff0080, 0 0 35px #00ffff; }
+}
+
+/* FILE UPLOAD BUTTON */
+.file-upload-wrapper {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.file-upload-label {
+    background: linear-gradient(90deg, #ff0080, #ff00ff, #00ffff);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    transition: transform 0.2s, box-shadow 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.file-upload-label:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+}
+
+#file-upload {
+    display: none;
+}
+
+#file-name {
+    margin-top: 10px;
+    color: #0ff;
+}
+
+/* IMAGE PREVIEW (CENTERED) */
+#image-preview {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 250px;
+    height: 250px;
+    border: 3px solid cyan;
+    box-shadow: 0 0 15px cyan;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#preview-img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+/* PREDICT BUTTON */
+button {
+    background: linear-gradient(90deg, #ff0080, #ff00ff, #00ffff);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    transition: transform 0.2s, box-shadow 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+}
+
+/* PREDICTION RESULT */
+#predictionResult {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #00ff00;
+}
+
+/* Fixed Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}

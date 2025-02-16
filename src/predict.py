@@ -14,8 +14,8 @@ def predict_custom_image(image_path):
     
     if img is None:
         print("Error: Image not found!")
-        return
-    
+        return None  # Ensure function does not break
+
     # Resize to 28x28 (Ensure same size as MNIST)
     img = cv2.resize(img, (28, 28))
 
@@ -30,9 +30,6 @@ def predict_custom_image(image_path):
 
     # Predict the digit
     prediction = model.predict(img)
-    predicted_digit = np.argmax(prediction)
+    predicted_digit = int(np.argmax(prediction))  # Convert NumPy type to standard Python int
 
-    print(f"Predicted: {predicted_digit}")
-
-# Test with a custom image
-predict_custom_image(r"C:\CodeAlpha_Image-Recognition\dataset\9.png")
+    return predicted_digit  # Return the predicted digit
