@@ -40,4 +40,5 @@ def predict():
         return jsonify({"prediction": predicted_digit})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)  # Use port 10000 for Render
+

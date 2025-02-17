@@ -27,7 +27,7 @@ body {
 }
 
 .navbar {
-    position: fixed;
+    position: sticky;
     top: auto; /* Remove any fixed top value */
     width: 100%;
     z-index: 1000;
