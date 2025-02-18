@@ -5,7 +5,7 @@ from predict import predict_custom_image  # Import the function from predict.py
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = "static/uploads/"
+UPLOAD_FOLDER = "static/uploads/" 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 # Ensure upload folder exists
